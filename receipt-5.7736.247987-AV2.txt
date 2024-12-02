@@ -1,0 +1,107 @@
+Princípios de Estrutura de Dados
+1. Listas
+   Definição: Uma lista é uma estrutura de dados linear que armazena uma coleção ordenada de elementos, que podem ser acessados por seu índice.
+   Operações Comuns:
+   - Inserção: Adiciona um elemento à lista.
+   - Remoção: Remove um elemento da lista.
+   - Busca: Localiza um elemento específico.
+
+   *Exemplo em Python*:
+   ```python
+   lista = [10, 20, 30]
+   lista.append(40)  # Inserção
+   lista.remove(20)  # Remoção
+   print(lista.index(30))  # Busca, retorna índice
+   ```
+2. Filas e Pilhas
+   - Filas: Estrutura de dados do tipo FIFO (First In, First Out). O primeiro elemento inserido é o primeiro a ser removido.
+   - Pilhas: Estrutura de dados do tipo LIFO (Last In, First Out). O último elemento inserido é o primeiro a ser removido.
+
+   *Exemplo de Fila em Python*:
+   ```python
+   from collections import deque
+   fila = deque()
+   fila.append(1)
+   fila.append(2)
+   print(fila.popleft())  # Remove o primeiro elemento (1)
+   ```
+
+   *Exemplo de Pilha em Python*:
+   ```python
+   pilha = []
+   pilha.append(10)
+   pilha.append(20)
+   print(pilha.pop())  # Remove o último elemento (20)
+   ```
+ 3. Algoritmos de Ordenação e Busca
+   - Bubble Sort: Ordena comparando elementos adjacentes e trocando-os se estiverem fora de ordem.
+   - Quick Sort: Divide e conquista; escolhe um pivô, organiza elementos menores à esquerda e maiores à direita.
+
+   *Exemplo de Bubble Sort em Python*:
+   ```python
+   def bubble_sort(arr):
+       n = len(arr)
+       for i in range(n):
+           for j in range(0, n-i-1):
+               if arr[j] > arr[j+1]:
+                   arr[j], arr[j+1] = arr[j+1], arr[j]
+       return arr
+
+   print(bubble_sort([64, 34, 25, 12, 22]))
+   ```
+
+   *Exemplo de Quick Sort em Python*:
+   ```python
+   def quick_sort(arr):
+       if len(arr) <= 1:
+           return arr
+       else:
+           pivot = arr[0]
+           less = [x for x in arr[1:] if x <= pivot]
+           greater = [x for x in arr[1:] if x > pivot]
+           return quick_sort(less) + [pivot] + quick_sort(greater)
+
+   print(quick_sort([10, 7, 8, 9, 1]))
+   ```
+
+---
+Implementação
+Classes para Filas e Pilhas
+
+Classe para Pilha:
+```python
+class Pilha:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+```
+
+Classe para Fila:
+```python
+class Fila:
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, item):
+        self.items.append(item)
+
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0)
+        else:
+            return None
+
+    def is_empty(self):
+        return len(self.items) == 0
+```
+
+Esses conceitos e exemplos ajudam a compreender como manipular dados eficientemente e implementar soluções para 
+problemas computacionais comuns.
